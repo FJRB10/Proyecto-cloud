@@ -1,24 +1,24 @@
 .home{
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: #DCDED0;
-
+    overflow-y: scroll; 
 }
 
 .nav-bar{
     width: 100%;
-    height: 50px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #3366CC;
-    padding: 0 24px;
+    padding: 0 23px;
     box-sizing: border-box;
-    position: fixed;
 }
-.content{
-    position: fixed; /* o absolute, fixed, etc. según tus necesidades */
-    top: 60px; /* o cualquier otro valor que desees */
+.logo-CRC{
+    top: 58px;
+}
+.content{ /* o absolute, fixed, etc. según tus necesidades */
+    top: 250px; /* o cualquier otro valor que desees */
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -31,14 +31,78 @@
 }
 .Datos{
     width: 100%;
-    position: fixed; /* o absolute, fixed, etc. según tus necesidades */
-    top: 240px;
+    top: 450px;
     background-color: #1B1757;
     font-size: 20px;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
+.Esp_Graficas{
+    width: 100%; /* Define el ancho del cuadrado */
+    height: auto; /* Define la altura del cuadrado */
+    border: 20px solid #1B1757;
+    background-color: white; /* Establece el color de fondo del cuadrado */
+    box-sizing: border-box;
+}
+
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+  }
+  
+.tabs_label{
+    padding: 10px 16px;
+    cursor: pointer;
+}
+.tabs_radio{
+    display: none;
+} 
+.tabs-content{
+    order: 1;
+    width: 100%;
+    border-bottom: 3px solid black;
+    display: none;
+}
+
+.tabs_radio:checked+.tabs_label{
+    font-weight: bold;
+    color: #3366CC;
+    /*border-bottom: 1px solid #3366CC; linea de los tabs */
+} 
+
+.tabs_radio:checked+.tabs_label+.tabs-content{
+    display: initial;
+} 
+.btn1 {
+    display: block;
+    width: 100px;
+    background-color: #7D9FE3;
+    padding: 10px;
+    color: black;
+
+  }
+
+  .btn2 {
+    display: block;
+    width: 100px;
+    margin-top: 0px;
+    background-color: #7D9FE3;
+    padding: 10px;
+    color: black;
+  }
+
+  .btn3 {
+    display: block;
+    width: 100px;
+    margin-top: 0px;
+    background-color: #7D9FE3;
+    padding: 10px;
+    color: black;
+
+  }
 .Datos h1{
     font-size: 30px;
     display: inline-block;
@@ -48,5 +112,23 @@
     border-radius: 5px; /* Bordes redondeados */
     text-decoration: none; /* Elimina subrayado por defecto */
     cursor: pointer; /* Cambia el cursor al pasar por encima */
-    transition: background-color 0.3s, color 0.3s; 
+}
+.Info{
+    width: 100%; /* Define el ancho del cuadrado */
+    height: auto; /* Define la altura del cuadrado */
+    border-right: 200px solid #F42E62;
+    border-left: 200px solid #F42E62;
+    background-color: white; /* Establece el color de fondo del cuadrado */
+    box-sizing: border-box;
+}
+
+.Detalles h2{
+    font-size: 27px;
+    padding: 12px 50;
+    text-align: center; /* Centra el texto horizontalmente */
+}
+.Detalles h3{
+    font-size: 22px;
+    padding: 30px 30;
+    text-align: center;
 }
