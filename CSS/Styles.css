@@ -29,6 +29,17 @@
 .content p{
     font-size: 20px;
 }
+label[for="correo"] {
+    font-size: 30px;
+    color: #fff;
+}
+input[type="text"] {
+  width: 500px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
 .Datos{
     width: 100%;
     top: 450px;
