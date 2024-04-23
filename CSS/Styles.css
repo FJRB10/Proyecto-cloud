@@ -29,10 +29,12 @@
 .content p{
     font-size: 20px;
 }
-label[for="correo"] {
-    font-size: 30px;
-    color: #fff;
+label[for="label1"] {
+    font-size: 25px;
+    color: black;
 }
+
+
 input[type="text"] {
   width: 500px;
   padding: 10px;
@@ -48,6 +50,13 @@ input[type="text"] {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+.Espacio{
+    width: 100%; /* Define el ancho del cuadrado */
+    height: auto; /* Define la altura del cuadrado */
+    border: 20px solid #1B1757;
+    background-image: linear-gradient(to bottom, #F3DBDB 20%, #E19D9D 80%);
+    box-sizing: border-box;
 }
 .Esp_Graficas{
     width: 100%; /* Define el ancho del cuadrado */
@@ -106,6 +115,15 @@ input[type="text"] {
   }
 
   .btn3 {
+    display: block;
+    width: 100px;
+    margin-top: 0px;
+    background-color: #7D9FE3;
+    padding: 10px;
+    color: black;
+
+  }
+  .btn4 { /* modificar caracteristicas */
     display: block;
     width: 100px;
     margin-top: 0px;

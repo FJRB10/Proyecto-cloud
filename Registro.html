@@ -25,16 +25,27 @@
         <div class="Datos">
             <h1> Datos</h1> 
             <div class = Espacio >
-                <label for="label1">Ingresa tu correo ejemplo@gmail.com email:</label><br>
+                <label for="Nombre">Nombre</label><br>
+                <input type="text" id="nombre" style="font-size: 20px;" required /><br>
+                <label for="Apellido">Apellido</label><br>
+                <input type="text" id="apellido" style="font-size: 20px;" required /><br>
+                <label for="NumTel">Numero de Telefono</label><br>
+                <input type="text" id="NumTel" style="font-size: 20px;" required /><br>
+                <label for="NumCed">Numero de Cedula</label><br>
+                <input type="text" id="NumCed" style="font-size: 20px;" required /><br>
+                <label for="email">Ingresa tu correo ejemplo@gmail.com email:</label><br>
                 <input type="email" id="email" pattern=".+@example\.com" style="font-size: 20px;" required /><br>
-                <label for="label1">Contraseña:</label><br>
-                <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" required /> <br><!--  agregar los otros requisitos de la contraseña -->
+                <label for="NumCed">Contraseña</label><br>
+                <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" required /><br> <!--  agregar los otros requisitos de la contraseña -->
                 <label for="label1"> Recordarme</label>
                 <input type="checkbox" id="cbox1" value="first_checkbox" /> <!--  revisar si necesito label en css -->
-                <a href="#" class="btn4"> Registrarme</a> 
-                <a href="#" class="btn5"> Olvide mi contraseña</a> <!--  boton solo texto -->
-                <a href="#" class="btn5"> Crear nueva cuenta</a> <!--  boton solo texto -->
+                <label for="label1"> Acepto terminos y condiciones</label>
+                <input type="checkbox" id="cbox1" value="first_checkbox" /> <!--  revisar si necesito label en css -->
+                <a href="#" class="btn4"> Registrarme</a> <!--  boton de registro crearlo en css -->
+                <a href="#" class="btn5"> ¿Ya tienes una cuenta?</a> <!--  boton de registro crearlo en css -->
+                <a href="#" class="btn5"> Olvide mi contraseña</a> <!--  boton de registro crearlo en css -->
             </div>
+
         </div>
     </section>
 </body>
