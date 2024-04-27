@@ -4,13 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./CSS/Styles.css">
-    <title>Pantalla login</title>
+    <title>Pantalla Olvide mi contraseña</title>
 </head>
 <body>
     <section class="home">
         <div class="nav-bar">
             <p> GOV.CO</p> 
-            <button> Sign in</button> 
             
         </div>
         <div class="logo-CRC">
@@ -19,20 +18,22 @@
         
         <div class="content">
             <h1> ¡Bienvenido!</h1> 
-            <p> ¡Bienvenido de vuelta! Por favor, inicia sesión para acceder a la plataforma y explorar todas las estadísticas, proyecciones y predicciones sobre la telefonía móvil en Colombia desde 2011 hasta 2023. Si eres nuevo aquí, regístrate para empezar a descubrir todo lo que nuestra plataforma tiene para ofrecerte.</p> 
+            <p> ¿Olvidaste tu contraseña? No te preocupes, estamos aquí para ayudarte. Ingresa tu dirección de correo electrónico asociada con tu cuenta. ¡Recupera el acceso a tu cuenta y continúa explorando nuestras estadísticas y proyecciones sobre la telefonía móvil en Colombia!</p> 
         </div>
         <!-- Seccion de datos-->
         <div class="Datos">
             <h1> Datos</h1> 
             <div class = Espacio >
-                <label for="label1">Ingresa tu correo ejemplo@gmail.com email:</label><br>
+                <label for="label1">Ingresa tu correo ejemplo@gmail.com <br> E-mail:</label><br>
                 <input type="email" id="email" pattern=".+@example\.com" style="font-size: 20px;" required /><br>
-                <label for="label1">Contraseña:</label><br>
+                <label for="label1">Contraseña nueva:</label><br>
                 <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" required /> <br><!--  agregar los otros requisitos de la contraseña -->
+                <label for="label1">Confirmar contraseña:</label><br>
+                <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" required /> <br>
                 <label for="label1"> Recordarme</label>
                 <input type="checkbox" id="cbox1" value="first_checkbox" /> <!--  revisar si necesito label en css -->
-                <a href="#" class="btn3"> Iniciar sesion</a> 
-                <a href="#" class="btn5"> Olvide mi contraseña</a> <!--  boton solo texto -->
+                <a href="#" class="btn4"> Actualizar</a> 
+                <a href="#" class="btn5"> iniciar sesion </a> <!--  boton solo texto -->
                 <a href="#" class="btn5"> Crear nueva cuenta</a> <!--  boton solo texto -->
             </div>
         </div>
