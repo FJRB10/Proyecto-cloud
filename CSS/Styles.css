@@ -83,7 +83,6 @@ input[type="text"] {
     color: #fff; /* Color del texto */
     border-radius: 5px; /* Bordes redondeados */
 }
-
 .Espacio{
     width: 100%; /* Define el ancho del cuadrado */
     height: auto; /* Define la altura del cuadrado */
@@ -98,6 +97,7 @@ input[type="text"] {
     background-image: linear-gradient(to bottom, #F3DBDB 20%, #E19D9D 80%);
     box-sizing: border-box;
     display: inline-block;
+    margin-left: 200px;
 }
 .Esp_Graficas{
     width: auto; /* Define el ancho del cuadrado */
