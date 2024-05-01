@@ -92,7 +92,7 @@ input[type="text"] {
     box-sizing: border-box;
 }
 .Espacio_perfil{
-    width: 100%; /* Define el ancho del cuadrado */
+    width: 600px; /* Define el ancho del cuadrado */
     height: auto; /* Define la altura del cuadrado */
     border: 20px solid #1B1757;
     background-image: linear-gradient(to bottom, #F3DBDB 20%, #E19D9D 80%);
