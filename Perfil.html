@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./CSS/Styles.css">
+    <title>Pantalla perfil usuario</title>
+</head>
+<body>
+    <section class="home">
+        <div class="nav-bar">
+            <p> GOV.CO</p> 
+            <button> perfil</button> <!-- logo de perfil-->
+        </div>
+        <div class="logo-CRC">
+            <img src="Images/Logo_CRC.jpg" height="200">
+        </div>
+        <!-- Seccion de datos-->
+        <div class="Datos">
+            <h1> Perfil </h1> <br>
+            <img src="Images/Foto perfil.png" class="Img_perfil" height="200">
+            <div class = Espacio_perfil >
+                <label for="label1">Grupo <br> 
+                <input type="email" id="email" pattern=".+@example\.com" style="font-size: 20px;" required /><br>
+                <label for="label1">Contraseña nueva:</label><br>
+                <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" required /> <br><!--  agregar los otros requisitos de la contraseña -->
+                <label for="label1">Confirmar contraseña:</label><br>
+                <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" required /> <br>
+                <label for="label1"> Recordarme</label>
+                <input type="checkbox" id="cbox1" value="first_checkbox" /> <!--  revisar si necesito label en css -->
+                </div>
+            <a href="#" class="btn1"> Olvide mi contraseña</a> 
+            <a href="#" class="btn1"> Solicitud cambio de permisos </a>
+            <a href="#" class="btn1"> Bases de datos cargadas</a> 
+            <a href="#" class="btn2"> Cerrar sesion</a>
+        </div>
+    </section>
+</body>
+<footer>
+    <section class="Info">
+    <div class="Logo_CRC">
+        <img src="Images/images.png" height="80">
+    </div>
+    <div class="Detalles">
+        <h2>Adriana Valentina Alvarez Arias</h2>    
+        <h2>Francisco Javier Ramirez Barreto</h2>
+        <h2>Ingeniería de Telecomunicaciones</h2>
+        <h2>Universidad Santo Tomás</h2>
+        <h3>2024</h3>
+    </div>
+    </section>
+</footer>
+</html>

@@ -34,6 +34,34 @@ label[for="label1"] {
     color: black;
 }
 
+label[for="label2"] {
+    font-size: 25px;
+    color: black;
+    margin-right: 1100px;
+}
+label[for="label3"] {
+    font-size: 20px;
+    color: black;
+    margin-right: 1000px;
+}
+.Formulario{
+    display: inline-block;
+    justify-content: left;
+    text-align: left;
+    vertical-align: top;
+}
+
+.check_label{
+    font-size: 20px;
+    color: black;
+    display: inline-block;
+    justify-content: left;
+    text-align: left;
+    margin-top: 30px;
+    margin-right: 300px;
+    margin-bottom: 30px;
+}
+
 input[type="text"] {
   width: 500px;
   padding: 10px;
@@ -63,6 +91,14 @@ input[type="text"] {
     background-image: linear-gradient(to bottom, #F3DBDB 20%, #E19D9D 80%);
     box-sizing: border-box;
 }
+.Espacio_perfil{
+    width: 100%; /* Define el ancho del cuadrado */
+    height: auto; /* Define la altura del cuadrado */
+    border: 20px solid #1B1757;
+    background-image: linear-gradient(to bottom, #F3DBDB 20%, #E19D9D 80%);
+    box-sizing: border-box;
+    display: inline-block;
+}
 .Esp_Graficas{
     width: auto; /* Define el ancho del cuadrado */
     height: flex; /* Define la altura del cuadrado */
@@ -70,7 +106,20 @@ input[type="text"] {
     background-color: white; /* Establece el color de fondo del cuadrado */
     box-sizing: border-box;
 }
-
+.table{
+    height: flex;
+    width: auto;
+    text-align: center;
+    justify-content: center;
+    margin-left: 220px;
+    font-size: 30px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    padding: 60px; /* Agregar relleno a las celdas */
+    border: 3px solid black; /* Agregar bordes a las celdas */
+}
 .tabs {
     display: flex;
     flex-wrap: wrap;
@@ -107,6 +156,7 @@ input[type="text"] {
     margin-right: 1100px;
     margin-left: 100px;
     margin-bottom: 30px;
+    margin-top: 15px;
     padding: 15px;
     background-color: #7D9FE3; 
     color: black;
@@ -135,6 +185,41 @@ input[type="text"] {
     border-radius: 16px;
   }
 
+  .startdate {  /* Calendario*/
+    /* Cambiar el color del texto */
+    color: #333;
+    /* Cambiar el fondo del campo de entrada */
+    background-color: #fff;
+    border: 1px solid black;
+    font-size: 16px;
+    /* Ajustar el tamaño del campo de entrada */
+    width: 200px;
+    height: 30px;
+    /* Agregar un relleno para dar espacio alrededor del texto */
+    padding: 5px;
+    /* Añadir bordes redondeados */
+    border-radius: 5px;
+    /* Establecer el cursor del ratón en apuntador para indicar que el campo es interactivo */
+    cursor: pointer;
+    margin-top: 25px;
+    margin-right: 1000px;
+    margin-bottom: 30px;
+  }
+  
+  .Graficas{
+    width: auto;
+    height: 400px;
+    margin-left: 200px;
+}
+  
+.Img_perfil{
+    width: auto;
+    height: 400px;
+    display: inline-block;
+    justify-content: left;
+    text-align: left;
+    vertical-align: top;
+}
   .btn3 {
     font-size: 25px;
     margin-right: 600px;
@@ -162,13 +247,13 @@ input[type="text"] {
 
   }
   .btn6 { /* modificar caracteristicas */
-    margin-right: 400px;
-    margin-left: 600px;
-    margin-bottom: 30px;
+    margin-right: 120px; /* Espacio entre los botones */
+    margin-bottom: 20px;
     padding: 15px;
+    font-size: 25px;
     background-color: #7D9FE3; 
     color: black;
-    display: block;
+    display: inline-block;
     align-items: center;
     justify-content: center;
     border: black;
