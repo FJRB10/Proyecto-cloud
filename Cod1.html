@@ -7,11 +7,19 @@
     <title>Pantalla anonimo</title>
 </head>
 <body>
+    <script src="Actividades.js"></script>
     <section class="home">
         <div class="nav-bar">
             <p> GOV.CO</p> 
-            <button> Sign in</button> 
-            
+            <button onclick="abrirVentana()"> Sign in</button>
+            <div class="ventana-Signin" id="ventana-Signin">
+                <div class="ventana">
+                    <h2 style="text-align: center;">Bienvenid@</h2>
+                    <button onclick="irAPaginaSesion()" class="btn5">Iniciar sesion</button>
+                    <button onclick="irAPaginaCrear()" class="btn5">Crear cuenta</button> <br>
+                    <button onclick="cerrarVentana()" class="btn7"> Cerrar </button>
+                </div>
+            </div>
         </div>
         <div class="logo-CRC">
             <img src="Images/Logo_CRC.jpg" height="200">
@@ -28,16 +36,55 @@
                 <div class="tabs">
                     <input type="radio" class="tabs_radio" name="tab-group" id="tab1" checked>
                     <label for="tab1" class="tabs_label">Tràfico</label>
-                    <div class="tabs-content">contenido tab 1
+                    <div class="tabs-content">
+                        <input class="startdate" type="date" id="start" name="trip-start" min="2020-01-01" /><br>
+                        <label for="label2"> Operadores</label><br>
+                        
+                        <div class="Formulario">
+                        <input class="checkbox" type="checkbox" id="SelTodos" value="first_checkbox" />
+                        <label for="SelTodos" class="check_label"> Seleccionar todos </label><br>
+                        <input class="checkbox" type="checkbox" id="Claro" value="first_checkbox" />
+                        <label for="Claro" class="check_label">Claro</label><br>
+                        <input class="checkbox" type="checkbox" id="Movistar" value="first_checkbox" />
+                        <label for="Movistar" class="check_label">Movistar</label><br>
+                        <input class="checkbox" type="checkbox" id="Tigo" value="first_checkbox" />
+                        <label for="Tigo" class="check_label">Tigo</label><br>
+
+                    </div>
+
+                        <img src="Images/Graficas_datos.jpg" class="Graficas">
+
                         <a href="#" class="btn1"> Ver historico</a> 
                         <a href="#" class="btn1"> Ver tendencias </a>
                         <a href="#" class="btn2"> Visualizar</a>  
                     </div>
-                
+
                     <input type="radio" class="tabs_radio" name="tab-group" id="tab2">
                     <label for="tab2" class="tabs_label">Nùmero de usuarios</label>
                     <div class="tabs-content">
-                        contenido tab 2
+                        <input class="startdate" type="date" id="start" name="trip-start" min="2020-01-01" /><br>
+                        <label for="label2"> Operadores</label><br>
+                        
+                        <div class="Formulario">
+                        <input class="checkbox" type="checkbox" id="SelTodos" value="first_checkbox" />
+                        <label for="SelTodos" class="check_label"> Seleccionar todos </label><br>
+                        <input class="checkbox" type="checkbox" id="Claro" value="first_checkbox" />
+                        <label for="Claro" class="check_label">Claro</label><br>
+                        <input class="checkbox" type="checkbox" id="Movistar" value="first_checkbox" />
+                        <label for="Movistar" class="check_label">Movistar</label><br>
+                        <input class="checkbox" type="checkbox" id="Tigo" value="first_checkbox" />
+                        <label for="Tigo" class="check_label">Tigo</label><br>
+                    </div>
+                        <img src="Images/Graficas_datos.jpg" class="Graficas">
+
+                        <a href="#" class="btn1"> Ver historico</a> 
+                        <a href="#" class="btn1"> Ver tendencias </a>
+                        <a href="#" class="btn2"> Visualizar</a> 
+                    </div>
+                    <input type="radio" class="tabs_radio" name="tab-group" id="tab3">
+                    <label for="tab3" class="tabs_label">otro</label>
+                    <div class="tabs-content">
+
                     </div>
                 </div>
             </div>
