@@ -7,10 +7,10 @@
     <title>Pantalla login</title>
 </head>
 <body>
+    <script src="Actividades.js"></script>
     <section class="home">
         <div class="nav-bar">
             <p> GOV.CO</p> 
-            <button> Sign in</button> 
             
         </div>
         <div class="logo-CRC">
@@ -19,7 +19,7 @@
         
         <div class="content">
             <h1> ¡Bienvenido!</h1> 
-            <p> ¡Bienvenido de vuelta! Por favor, inicia sesión para acceder a la plataforma y explorar todas las estadísticas, proyecciones y predicciones sobre la telefonía móvil en Colombia desde 2011 hasta 2023. Si eres nuevo aquí, regístrate para empezar a descubrir todo lo que nuestra plataforma tiene para ofrecerte.</p> 
+            <p style="font-size: 25px;"> ¡Bienvenido de vuelta! Por favor, inicia sesión para acceder a la plataforma y explorar todas las estadísticas, proyecciones y predicciones sobre la telefonía móvil en Colombia desde 2011 hasta 2023. Si eres nuevo aquí, regístrate para empezar a descubrir todo lo que nuestra plataforma tiene para ofrecerte.</p> 
         </div>
         <!-- Seccion de datos-->
         <div class="Datos">
@@ -32,9 +32,10 @@
                 <label for="label1"> Recordarme</label>
                 <input type="checkbox" id="cbox1" value="first_checkbox" /> <!--  revisar si necesito label en css -->
                 <a href="#" class="btn3"> Iniciar sesion</a> 
-                <a href="#" class="btn5"> Olvide mi contraseña</a> <!--  boton solo texto -->
-                <a href="#" class="btn5"> Crear nueva cuenta</a> <!--  boton solo texto -->
             </div>
+            <button onclick="irAPaginaCrear()" class="btn5">Crear cuenta</button>
+            <button onclick="irAPaginaContraseña()" class="btn5">Olvide mi contraseña</button> <!--  boton solo texto -->
+           
         </div>
     </section>
 </body>

@@ -7,6 +7,7 @@
     <title>Pantalla administrador</title>
 </head>
 <body>
+    <script src="Actividades.js"></script>
     <section class="home">
         <div class="nav-bar">
             <p> GOV.CO</p> 
@@ -21,9 +22,9 @@
             <h1> Roles</h1> 
             <div class = Esp_Graficas >
                 <input class="checkbox" type="checkbox" id="SelTodos" value="first_checkbox" />
-                <label for="SelTodosAdmin" class="check_label"> Seleccionar todos </label>       
-                <label class="check_label"> Borrar </label>       
-                <label class="check_label"> Crear </label>
+                <label style="font-size: 25px;" for="SelTodosAdmin" class="check_label"> Seleccionar todos </label>       
+                <button class="btn7"> Borrar </button>       
+                <button class="btn7"> Crear </button>
                 <div class="tabla">
                     <table class = "table" border="1">
                         <tr>
@@ -50,9 +51,26 @@
                     </table>
                 </div>
             </div>
-            <a href="#" class="btn6"> Cargar archivos</a> 
-            <a href="#" class="btn6"> Ver base de datos </a> 
-            <a href="#" class="btn6"> Descargar archivos</a>
+            <button onclick="abrirVentana()" class="btn6"> Cargar archivos</button>
+            <div class="ventana-Signin" id="ventana-Signin">
+                <div class="ventana">
+                    <label style="font-size: 20px;" for="archivo">Selecciona un archivo:</label>
+                    <input type="file" id="archivo" name="archivo" accept=".txt, .pdf, .doc"> <br>
+                    <button class="btn8" type="submit">Enviar Archivo</button><br>
+                    <button onclick="cerrarVentana()" class="btn8"> Cerrar </button>
+                </div>
+            </div> 
+            <button class="btn6"> Ver base de datos </button> 
+            <button onclick="abrirVentana()" class="btn6"> Descargar archivos</button>
+            <div class="ventana-Signin" id="ventana-Signin">
+                <div class="ventana">
+                    <h2 style="text-align: center;">Formato de descarga</h2>
+                    <button class="btn5">.xls</button>
+                    <button class="btn5">.csv</button> 
+                    <button class="btn5"> .pdf </button><br>
+                    <button onclick="cerrarVentana()" class="btn5"> Cerrar </button>
+                </div>
+            </div>    
         </div>
     </section>
 </body>

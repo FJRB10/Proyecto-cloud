@@ -7,10 +7,11 @@
     <title>Pantalla anonimo</title>
 </head>
 <body>
+    <script src="Actividades.js"></script>
     <section class="home">
         <div class="nav-bar">
             <p> GOV.CO</p> 
-            <button> perfil</button> <!-- logo de perfil-->
+            <button onclick="irAPaginaPerfil()"> Perfil</button> <!-- logo de perfil-->
         </div>
         <div class="logo-CRC">
             <img src="Images/Logo_CRC.jpg" height="200">
@@ -40,13 +41,13 @@
                         <input class="checkbox" type="checkbox" id="Tigo" value="first_checkbox" />
                         <label for="Tigo" class="check_label">Tigo</label><br>
 
-                    </div>
+                    </div>  
 
-                        <img src="Images/Graficas_datos.jpg" class="Graficas">
+                        <img src="Images/Graficas_datos.jpg" class="Graficas"> <br>
 
-                        <a href="#" class="btn1"> Ver historico</a> 
+                        <a href="#" class="btn1"> Ver historico</a>   
                         <a href="#" class="btn1"> Ver tendencias </a>
-                        <a href="#" class="btn2"> Visualizar</a>  
+                        <a href="#" class="btn1"> Visualizar</a>  
                     </div>
                 
                     <input type="radio" class="tabs_radio" name="tab-group" id="tab2">
@@ -55,15 +56,33 @@
                         contenido tab 2
                         <a href="#" class="btn1"> Ver historico</a> 
                         <a href="#" class="btn1"> Ver tendencias </a>
-                        <a href="#" class="btn2"> Visualizar</a>  
+                        <a href="#" class="btn1"> Visualizar</a>  
                     
                     </div>
                 </div>
             </div>
-            <a href="#" class="btn6"> Cargar archivos</a> 
-            <a href="#" class="btn6"> Ver base de datos </a> 
-            <a href="#" class="btn6"> Descargar archivos</a> 
-
+            <!-- Se deben meter dentro de cada tab? para que no haya confusiones entre tabs-->
+            <button onclick="abrirVentana()" class="btn6"> Cargar archivos</button>
+            <div class="ventana-Signin" id="ventana-Signin">
+                <div class="ventana">
+                    <label style="font-size: 20px;" for="archivo">Selecciona un archivo:</label>
+                    <input type="file" id="archivo" name="archivo" accept=".txt, .pdf, .doc"> <br>
+                    <button class="btn8" type="submit">Enviar Archivo</button><br>
+                    <button onclick="cerrarVentana()" class="btn8"> Cerrar </button>
+                </div>
+            </div> 
+            <button class="btn6"> Ver base de datos </button> 
+             
+            <button onclick="abrirVentana()" class="btn6"> Descargar archivos</button>
+            <div class="ventana-Signin" id="ventana-Signin">
+                <div class="ventana">
+                    <h2 style="text-align: center;">Formato de descarga</h2>
+                    <button class="btn5">.xls</button>
+                    <button class="btn5">.csv</button> 
+                    <button class="btn5"> .pdf </button><br>
+                    <button onclick="cerrarVentana()" class="btn5"> Cerrar </button>
+                </div>
+            </div> 
         </div>
     </section>
 </body>

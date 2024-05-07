@@ -7,6 +7,7 @@
     <title>Pantalla Olvide mi contraseña</title>
 </head>
 <body>
+    <script src="Actividades.js"></script>
     <section class="home">
         <div class="nav-bar">
             <p> GOV.CO</p> 
@@ -33,8 +34,8 @@
                 <label for="label1"> Recordarme</label>
                 <input type="checkbox" id="cbox1" value="first_checkbox" /> <!--  revisar si necesito label en css -->
                 <a href="#" class="btn4"> Actualizar</a> 
-                <a href="#" class="btn5"> iniciar sesion </a> <!--  boton solo texto -->
-                <a href="#" class="btn5"> Crear nueva cuenta</a> <!--  boton solo texto -->
+                <button onclick="irAPaginaSesion()" class="btn5">Iniciar sesion</button>
+                <button onclick="irAPaginaCrear()" class="btn5">Crear cuenta</button>
             </div>
         </div>
     </section>

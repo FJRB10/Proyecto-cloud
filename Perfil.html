@@ -7,10 +7,10 @@
     <title>Pantalla perfil usuario</title>
 </head>
 <body>
+    <script src="Actividades.js"></script>
     <section class="home">
         <div class="nav-bar">
             <p> GOV.CO</p> 
-            <button> perfil</button> <!-- logo de perfil-->
         </div>
         <div class="logo-CRC">
             <img src="Images/Logo_CRC.jpg" height="200">
@@ -31,14 +31,14 @@
                 <label for="label1">Telefono:</label><br>
                 <input type="number" style="font-size: 25px;" required /> <br>
                 <label for="label1">Contraseña:</label><br>
-                <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 25px;" required /> <br>
+                <input type="password" style="font-size: 25px;" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"  required /> <br>
                 <label for="label1">Permisos:</label><br>
                 <input type="text"  style="font-size: 25px;" required /> <br>
             </div>
-            <a href="#" class="btn1"> Olvide mi contraseña</a> 
-            <a href="#" class="btn1"> Solicitud cambio de permisos </a>
-            <a href="#" class="btn1"> Bases de datos cargadas</a> 
-            <a href="#" class="btn2"> Cerrar sesion</a>
+            <button onclick="irAPaginaContraseña()" class="btn1">Olvide mi contraseña</button>
+            <button class="btn1"> Solicitud cambio de permisos </button>
+            <button class="btn1"> Bases de datos cargadas</button> 
+            <button onclick="irAPaginaCod1()" class="btn5">Cerrar sesion</button>
         </div>
     </section>
 </body>
