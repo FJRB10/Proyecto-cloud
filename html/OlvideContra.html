@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/Styles.css">
+    <title>Pantalla Olvide mi contraseña</title>
+</head>
+<body>
+    <script src="Actividades.js"></script>
+    <section class="home">
+        <div class="nav-bar">
+            <p> GOV.CO</p> 
+            
+        </div>
+        <div class="logo-CRC">
+            <img src="../Images/Logo_CRC.jpg" height="200">
+        </div>
+        
+        <div class="content">
+            <h1> ¡Bienvenido!</h1> 
+            <p> ¿Olvidaste tu contraseña? No te preocupes, estamos aquí para ayudarte. Ingresa tu dirección de correo electrónico asociada con tu cuenta. ¡Recupera el acceso a tu cuenta y continúa explorando nuestras estadísticas y proyecciones sobre la telefonía móvil en Colombia!</p> 
+        </div>
+        <!-- Seccion de datos-->
+        <div class="Datos">
+            <h1> Datos</h1> 
+            <div class = Espacio >
+                <label for="label1">Ingresa tu correo ejemplo@gmail.com <br> E-mail:</label><br>
+                <input type="email" id="email" pattern=".+@example\.com" style="font-size: 20px;" required /><br>
+                <label for="label1">Contraseña nueva:</label><br>
+                <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" required /> <br><!--  agregar los otros requisitos de la contraseña -->
+                <label for="label1">Confirmar contraseña:</label><br>
+                <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" required /> <br>
+                <label for="label1"> Recordarme</label>
+                <input type="checkbox" id="cbox1" value="first_checkbox" /> <!--  revisar si necesito label en css -->
+                <a href="#" class="btn4"> Actualizar</a> 
+                <button onclick="irAPaginaSesion()" class="btn5">Iniciar sesion</button>
+                <button onclick="irAPaginaCrear()" class="btn5">Crear cuenta</button>
+            </div>
+        </div>
+    </section>
+</body>
+<footer>
+    <section class="Info">
+    <div class="Logo_CRC">
+        <img src="../Images/images.png" height="100">
+    </div>
+    <div class="Detalles">
+        <h2>Adriana Valentina Alvarez Arias</h2>    
+        <h2>Francisco Javier Ramirez Barreto</h2>
+        <h2>Ingeniería de Telecomunicaciones</h2>
+        <h2>Universidad Santo Tomás</h2>
+        <h3>2024</h3>
+    </div>
+    </section>
+</footer>
+</html>

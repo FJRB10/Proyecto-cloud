@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/Styles.css">
+    <title>Pantalla perfil usuario</title>
+</head>
+<body>
+    <script src="Actividades.js"></script>
+    <section class="home">
+        <div class="nav-bar">
+            <p> GOV.CO</p> 
+        </div>
+        <div class="logo-CRC">
+            <img src="../Images/Logo_CRC.jpg" height="200">
+        </div>
+        <!-- Seccion de datos-->
+        <div class="Datos">
+            <h1> Perfil </h1> <br>
+            <img src="../Images/Foto perfil.png" class="Img_perfil" height="200">
+            <div class = Espacio_perfil >
+                <label for="label1">Grupo <br> 
+                <input type="text"  style="font-size: 25px;" required /><br>
+                <label for="label1">Nombre</label><br>
+                <input type="text" style="font-size: 25px;" required /> <br><!--  agregar los otros requisitos de la contraseña -->
+                <label for="label1">Correo:</label><br>
+                <input type="email"  style="font-size: 25px;" required /> <br>
+                <label for="label1">Cedula:</label><br>
+                <input type="number" style="font-size: 25px;" pattern=".+@example\.com"  required /> <br>
+                <label for="label1">Telefono:</label><br>
+                <input type="number" style="font-size: 25px;" required /> <br>
+                <label for="label1">Contraseña:</label><br>
+                <input type="password" style="font-size: 25px;" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"  required /> <br>
+                <label for="label1">Permisos:</label><br>
+                <input type="text"  style="font-size: 25px;" required /> <br>
+            </div>
+            <button onclick="irAPaginaContraseña()" class="btn1">Olvide mi contraseña</button>
+            <button class="btn1"> Solicitud cambio de permisos </button>
+            <button class="btn1"> Bases de datos cargadas</button> 
+            <button onclick="irAPaginaCod1()" class="btn5">Cerrar sesion</button>
+        </div>
+    </section>
+</body>
+<footer>
+    <section class="Info">
+    <div class="Logo_CRC">
+        <img src="../Images/images.png" height="80">
+    </div>
+    <div class="Detalles">
+        <h2>Adriana Valentina Alvarez Arias</h2>    
+        <h2>Francisco Javier Ramirez Barreto</h2>
+        <h2>Ingeniería de Telecomunicaciones</h2>
+        <h2>Universidad Santo Tomás</h2>
+        <h3>2024</h3>
+    </div>
+    </section>
+</footer>
+</html>
