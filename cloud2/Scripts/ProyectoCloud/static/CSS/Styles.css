@@ -1,0 +1,329 @@
+.home{
+    width: auto;
+    height: auto;
+    background-color: #DCDED0;
+    overflow-y: scroll; 
+}
+
+.nav-bar{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3366CC;
+    padding: 0 23px;
+    box-sizing: border-box;
+}
+.logo-CRC{
+    top: 58px;
+}
+.content{ /* o absolute, fixed, etc. según tus necesidades */
+    top: 250px; /* o cualquier otro valor que desees */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.content h1{
+    font-size: 40px;
+}
+.content p{
+    font-size: 20px;
+}
+label[for="label1"] {
+    margin-top: 10px;
+    font-size: 25px;
+    color: black;
+}
+
+label[for="label2"] {
+    font-size: 25px;
+    color: black;
+    margin-right: 1100px;
+}
+label[for="label3"] {
+    font-size: 20px;
+    color: black;
+    margin-right: 1000px;
+}
+.Formulario{
+    display: inline-block;
+    justify-content: left;
+    text-align: left;
+    vertical-align: top;
+}
+
+.check_label{
+    font-size: 20px;
+    color: black;
+    display: inline-block;
+    justify-content: left;
+    text-align: left;
+    margin-top: 30px;
+    margin-right: 300px;
+    margin-bottom: 30px;
+}
+
+input[type="text"] {
+  width: 500px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.Datos{
+    height: auto;
+    width: auto;
+    background-color: #1B1757;
+    text-align: center;
+}
+.Datos h1{
+    font-size: 30px;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #7D9FE3; /* Color de fondo del botón */
+    color: #fff; /* Color del texto */
+    border-radius: 5px; /* Bordes redondeados */
+}
+.Espacio{
+    width: 100%; /* Define el ancho del cuadrado */
+    height: flex; /* Define la altura del cuadrado */
+    border: 20px solid #1B1757;
+    background-image: linear-gradient(to bottom, #F3DBDB 20%, #E19D9D 80%);
+    box-sizing: border-box;
+}
+.Espacio_perfil{
+    width: 600px; /* Define el ancho del cuadrado */
+    height: auto; /* Define la altura del cuadrado */
+    border: 20px solid #1B1757;
+    background-image: linear-gradient(to bottom, #F3DBDB 20%, #E19D9D 80%);
+    box-sizing: border-box;
+    display: inline-block;
+    margin-left: 200px;
+}
+.Esp_Graficas{
+    width: auto; /* Define el ancho del cuadrado */
+    height: flex; /* Define la altura del cuadrado */
+    border: 20px solid #1B1757;
+    background-color: white; /* Establece el color de fondo del cuadrado */
+    box-sizing: border-box;
+}
+.table{
+    height: flex;
+    width: auto;
+    text-align: center;
+    justify-content: center;
+    margin-left: 220px;
+    font-size: 30px;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+th, td {
+    padding: 60px; /* Agregar relleno a las celdas */
+    border: 3px solid black; /* Agregar bordes a las celdas */
+}
+.tabs {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: flex;
+    overflow: hidden; /* Limpiar el float */
+  }
+  
+.tabs_label{
+    font-size: 25px;
+    padding: 10px 16px;
+    cursor: pointer;
+}
+.tabs_radio{
+    display: none;
+} 
+.tabs-content{
+    order: 1;
+    width: auto;
+    font-size: 30px;
+    border-bottom: 3px solid black;
+    display: none;
+}
+
+.tabs_radio:checked+.tabs_label{
+    font-weight: bold;
+    color: #3366CC;
+    border-bottom: 1px solid #3366CC; linea de los tabs 
+} 
+
+.tabs_radio:checked+.tabs_label+.tabs-content{
+    display: initial;
+} 
+
+.btn1 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-top: 15px;
+    margin-left: 180px;
+    padding: 20px;
+    background-color: #7D9FE3; 
+    color: black;
+    display: inline-block;
+    margin-right: auto;
+    border: black;
+    cursor: pointer;
+    transition: .3s ease all;
+    border-radius: 16px;
+ }
+
+  .startdate {  /* Calendario*/
+    /* Cambiar el color del texto */
+    color: #333;
+    /* Cambiar el fondo del campo de entrada */
+    background-color: #fff;
+    border: 1px solid black;
+    font-size: 16px;
+    /* Ajustar el tamaño del campo de entrada */
+    width: 200px;
+    height: 30px;
+    /* Agregar un relleno para dar espacio alrededor del texto */
+    padding: 5px;
+    /* Añadir bordes redondeados */
+    border-radius: 5px;
+    /* Establecer el cursor del ratón en apuntador para indicar que el campo es interactivo */
+    cursor: pointer;
+    margin-top: 25px;
+    margin-right: 1000px;
+    margin-bottom: 30px;
+  }
+  
+  .Graficas{
+    width: auto;
+    height: 400px;
+    margin-left: auto;
+}
+  
+.Img_perfil{
+    width: auto;
+    height: 400px;
+    display: inline-block;
+    justify-content: left;
+    text-align: left;
+    vertical-align: top;
+}
+  .btn3 {
+    font-size: 25px;
+    margin-right: 600px;
+    margin-left: 600px;
+    margin-top: 15px;
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: #7D9FE3; 
+    color: black;
+    display: block;
+    align-items: center;
+    justify-content: center;
+    border: black;
+    cursor: pointer;
+    transition: .3s ease all;
+    border-radius: 16px;
+  }
+  .btn4 { /* modificar caracteristicas */
+    display: block;
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 630px;
+    margin-bottom: 15px;
+    background-color: #7D9FE3;
+    padding: 10px;
+    color: black;
+    font-size: 20px;
+  }
+  .btn6 { /* modificar caracteristicas */
+    margin-right: 120px; /* Espacio entre los botones */
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 25px;
+    background-color: #7D9FE3; 
+    color: black;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    border: black;
+    cursor: pointer;
+    transition: .3s ease all;
+    border-radius: 5px;
+  }
+
+.Info{
+    width: 100%; /* Define el ancho del cuadrado */
+    height: auto; /* Define la altura del cuadrado */
+    border-right: 200px solid #F42E62;
+    border-left: 200px solid #F42E62;
+    background-color: white; /* Establece el color de fondo del cuadrado */
+    box-sizing: border-box;
+}
+
+.Detalles h2{
+    font-size: 27px;
+    padding: 12px 50;
+    text-align: center; /* Centra el texto horizontalmente */
+}
+.Detalles h3{
+    font-size: 22px;
+    padding: 30px 30;
+    text-align: center;
+}
+/* VENTANAS EMERGENTES */
+
+.ventana-Signin {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente */
+    display: none; /* Ocultar por defecto */
+    justify-content: center;
+    align-items: center;
+}
+
+.ventana {
+    background-color: #DCDED0;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.cerrar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.btn5 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    background-color: #7D9FE3;
+    padding: 10px;
+    color: black;
+    transition: .3s ease all;
+    border-radius: 14px;
+}
+.btn7 {
+    background-color: #7D9FE3;
+    padding: 10px;
+    margin-left: 50px;
+    color: black;
+    cursor: pointer;
+    transition: .3s ease all;
+    border-radius: 14px;
+    font-size: 25px;
+}
+.btn8 {
+    background-color: #7D9FE3;
+    padding: 10px;
+    margin-left: 0px;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    color: black;
+    cursor: pointer;
+    transition: .3s ease all;
+    border-radius: 14px;
+    font-size: 15px;
+}
