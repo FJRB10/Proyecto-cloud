@@ -1,13 +1,15 @@
+{%load static%}
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/Styles.css">
+    <link rel="stylesheet" href="{% static '/CSS/Styles.css' %}">
     <title>Pantalla administrador</title>
 </head>
 <body>
-    <script src="Actividades.js"></script>
+    <script src="{% static '/Javascript/Actividades.js' %}"></script>
     <section class="home">
         <div class="nav-bar">
             <p> GOV.CO</p> 
@@ -15,7 +17,7 @@
             
         </div>
         <div class="logo-CRC">
-            <img src="../Images/Logo_CRC.jpg" height="200">
+            <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
         </div>
         <!-- Seccion de datos-->
         <div class="Datos">
@@ -77,7 +79,7 @@
 <footer>
     <section class="Info">
     <div class="Logo_CRC">
-        <img src="../Images/images.png" height="100">
+        <img src="{% static '/Images/images.png' %}" height="100">
     </div>
     <div class="Detalles">
         <h2>Adriana Valentina Alvarez Arias</h2>    

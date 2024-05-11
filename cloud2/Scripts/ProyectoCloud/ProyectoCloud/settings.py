@@ -28,6 +28,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+STATICFILES_DIRS = ['C:/Cloud/Proyecto-cloud/cloud2/Scripts/ProyectoCloud/static']
 
 # Application definition
 
