@@ -18,6 +18,9 @@ function irAPaginaPerfil() {
 function irAPaginaCod1() {
   window.location.href = "Cod1.html";
 }
+function irAPaginaAnalista() {
+  window.location.href = "PrincipalAnalista.html";
+}
 function cerrarVentana() {
   var ventana = document.getElementById("ventana-Signin");
   ventana.style.display = "none"; // Ocultar la ventana emergente

@@ -1,4 +1,4 @@
-{%load static}
+{%load static%}
 
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,9 @@
             
         </div>
         <div class="logo-CRC">
-            <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
+            <button onclick="irAPaginaCod1()">
+                <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
+            </button>
         </div>
         
         <div class="content">
@@ -34,11 +36,11 @@
                     <label for="Apellido">Apellido</label><br>
                     <input type="text" id="apellido" style="font-size: 20px;" required /><br>
                     <label for="NumTel">Numero de Telefono</label><br>
-                    <input type="text" id="NumTel" style="font-size: 20px;" required /><br>
+                    <input type="text" id="NumTel" pattern = "^\d+$" style="font-size: 20px;" required /><br>
                     <label for="NumCed">Numero de Cedula</label><br>
-                    <input type="text" id="NumCed" style="font-size: 20px;" required /><br>
+                    <input type="text" id="NumCed" pattern = "^\d+$" style="font-size: 20px;" required /><br>
                     <label for="email">Ingresa tu correo ejemplo@gmail.com email:</label><br>
-                    <input type="email" id="email" pattern=".+@example\.com" style="font-size: 20px;" required /><br>
+                    <input type="email" id="email" pattern="^[a-zA-Z\d\.-]+@[a-z]\.[a-zA-Z]$" style="font-size: 20px;" required /><br>
                     <label for="NumCed">Contraseña</label><br>
                     <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" required /><br> <!--  agregar los otros requisitos de la contraseña -->
                     <label for="label1"> Recordarme</label>

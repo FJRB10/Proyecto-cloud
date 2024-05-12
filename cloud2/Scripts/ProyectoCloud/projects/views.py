@@ -12,7 +12,7 @@ def login(request):
 def perfil(request):
     return render(request, 'html/perfil.html')
 
-def analista(request):
+def PrincipalAnalista(request):
     return render(request, 'html/PrincipalAnalista.html')
 
 def registro(request):
