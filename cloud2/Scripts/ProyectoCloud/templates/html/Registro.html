@@ -30,19 +30,21 @@
         <div class="Datos">
             <h1> Datos</h1> 
             <div class = Espacio >
-                <form id="miFormulario" onsubmit="return validarFormulario()">
+                <form id="miFormulario" onsubmit="return validarFormulario()" action = "registro/" method="POST">
+                    {% csrf_token %}
+
                     <label for="Nombre">Nombre</label><br>
-                    <input type="text" id="nombre" style="font-size: 20px;" required /><br>
+                    <input type="text" id="nombre" style="font-size: 20px;" name = "Nombre" required /><br>
                     <label for="Apellido">Apellido</label><br>
-                    <input type="text" id="apellido" style="font-size: 20px;" required /><br>
+                    <input type="text" id="apellido" style="font-size: 20px;" name = "Apellido" required /><br>
                     <label for="NumTel">Numero de Telefono</label><br>
-                    <input type="text" id="NumTel" pattern = "^\d+$" style="font-size: 20px;" required /><br>
+                    <input type="text" id="NumTel" pattern = "^\d+$" style="font-size: 20px;" name = "NumeroCel" required /><br>
                     <label for="NumCed">Numero de Cedula</label><br>
-                    <input type="text" id="NumCed" pattern = "^\d+$" style="font-size: 20px;" required /><br>
+                    <input type="text" id="NumCed" pattern = "^\d+$" style="font-size: 20px;" name = "NumeroCedu" required /><br>
                     <label for="email">Ingresa tu correo ejemplo@gmail.com email:</label><br>
-                    <input type="email" id="email" pattern="^[a-zA-Z\d\.-]+@[a-z]\.[a-zA-Z]$" style="font-size: 20px;" required /><br>
+                    <input type="email" id="email" pattern="^[a-zA-Z\d\.-]+@[a-z]\.[a-zA-Z]$" style="font-size: 20px;" name = "Email" required /><br>
                     <label for="NumCed">Contraseña</label><br>
-                    <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" required /><br> <!--  agregar los otros requisitos de la contraseña -->
+                    <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" name = "Contraseña" required /><br> <!--  agregar los otros requisitos de la contraseña -->
                     <label for="label1"> Recordarme</label>
                     <input type="checkbox" id="cbox1" value="first_checkbox" /> <!--  revisar si necesito label en css -->
                     <label for="label1"> Acepto terminos y condiciones</label>
