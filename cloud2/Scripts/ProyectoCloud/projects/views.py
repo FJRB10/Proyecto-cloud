@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Usuario, Fijo_Suscriptores, Fijo_Ingresos, Fijo_Trafico, Demanda_Ingresos, Demanda_Abonados, Demanda_Trafico
+from .models import Usuario, Abonados, Trafico, Ingresos
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
@@ -34,7 +34,7 @@ def login2(request):
 
         if user is not None:
             print('Se dirige hacer el login')
-            login(request, user)
+            login(user)
             user2 = Usuario.objects.get(correo = user).rol
             print(user2)
             
@@ -123,272 +123,179 @@ def cargarArchivo(request):
 
         if extension.lower() == '.xlsx':
             excel = pd.read_excel(archivo, sheet_name = None)
-            pag1 = 'INTERNET_MOVIL_CARGO_FIJO_SUSCR'
-            pag2 = 'INTERNET_MOVIL_CARGO_FIJO_INGRE'
-            pag3 = 'INTERNET_MOVIL_CARGO_FIJO_TRAFI'
-            pag4 = 'INTERNET_MOVIL_DEMANDA_INGRESOS'
-            pag5 = 'INTERNET_MOVIL_DEMANDA_ABONADOS'
-            pag6 = 'INTERNET_MOVIL_DEMANDA_TRAFICO_'
-
-            lista = [pag1, pag2, pag3, pag4, pag5, pag6]
-            
-            for i in lista:
-                try:
-                    excel[i]
-                    
-                    if i == pag1:
-                        print(excel[i].iloc[0])
-                        long = len(excel[i].index)
-
-                        ultimo_registro = Fijo_Suscriptores.objects.order_by('id').first()
-
-                        if ultimo_registro:
-                            print(f'La tabla {i} tiene elementos\n')
-                            ultimoID = ultimo_registro.id
-                            nuevoID = ultimoID + 1
-                            for j in range(long):
-                                fila = Fijo_Suscriptores()
-                                fila.id = nuevoID
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idSegmento = excel[i].iloc[j,3]
-                                fila.segmento = excel[i].iloc[j,4]
-                                fila.idEmpresa = excel[i].iloc[j,5]
-                                fila.empresa = excel[i].iloc[j,6]
-                                fila.idterminal = excel[i].iloc[j,7]
-                                fila.terminal = excel[i].iloc[j,8]
-                                fila.idtecnologia = excel[i].iloc[j,9]
-                                fila.tecnologia = excel[i].iloc[j,10]
-                                fila.cantidadSus = excel[i].iloc[j,11]
-                                fila.save()
-                                nuevoID += 1
-                        else:
-                            print(f'la tabla {i} esta vacia')
-                            for j in range(long):
-                                fila = Fijo_Suscriptores()
-                                fila.id = j
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idSegmento = excel[i].iloc[j,3]
-                                fila.segmento = excel[i].iloc[j,4]
-                                fila.idEmpresa = excel[i].iloc[j,5]
-                                fila.empresa = excel[i].iloc[j,6]
-                                fila.idterminal = excel[i].iloc[j,7]
-                                fila.terminal = excel[i].iloc[j,8]
-                                fila.idtecnologia = excel[i].iloc[j,9]
-                                fila.tecnologia = excel[i].iloc[j,10]
-                                fila.cantidadSus = excel[i].iloc[j,11]
-                                fila.save()
-
-                    elif i == pag2:
-                        long = len(excel[i].index)
-
-                        ultimo_registro = Fijo_Ingresos.objects.order_by('id').first()
-
-                        if ultimo_registro:
-                            print(f'La tabla {i} tiene elementos\n')
-                            ultimoID = ultimo_registro.id
-                            nuevoID = ultimoID + 1
-                            for j in range(long):
-                                fila = Fijo_Ingresos()
-                                fila.id = nuevoID
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idEmpresa = excel[i].iloc[j,3]
-                                fila.empresa = excel[i].iloc[j,4]
-                                fila.idSegmento = excel[i].iloc[j,5]
-                                fila.segmento = excel[i].iloc[j,6]
-                                fila.idterminal = excel[i].iloc[j,7]
-                                fila.terminal = excel[i].iloc[j,8]
-                                fila.ingresos = excel[i].iloc[j,9]
-                                fila.save()
-                                nuevoID += 1
-                        else:
-                            print(f'la tabla {i} esta vacia')
-                            for j in range(long):
-                                fila = Fijo_Ingresos()
-                                fila.id = j
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idEmpresa = excel[i].iloc[j,3]
-                                fila.empresa = excel[i].iloc[j,4]
-                                fila.idSegmento = excel[i].iloc[j,5]
-                                fila.segmento = excel[i].iloc[j,6]
-                                fila.idterminal = excel[i].iloc[j,7]
-                                fila.terminal = excel[i].iloc[j,8]
-                                fila.ingresos = excel[i].iloc[j,9]
-                                fila.save()
-
-                    elif i == pag3:
-                        long = len(excel[i].index)
-
-                        ultimo_registro = Fijo_Trafico.objects.order_by('id').first()
-
-                        if ultimo_registro:
-                            print(f'La tabla {i} tiene elementos\n')
-                            ultimoID = ultimo_registro.id
-                            nuevoID = ultimoID + 1
-                            for j in range(long):
-                                fila = Fijo_Trafico()
-                                fila.id = nuevoID
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idEmpresa = excel[i].iloc[j,3]
-                                fila.empresa = excel[i].iloc[j,4]
-                                fila.trafico = excel[i].iloc[j,5]
-                                fila.save()
-                                nuevoID += 1
-                        else:
-                            print(f'la tabla {i} esta vacia')
-                            for j in range(long):
-                                fila = Fijo_Trafico()
-                                fila.id = j
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idEmpresa = excel[i].iloc[j,3]
-                                fila.empresa = excel[i].iloc[j,4]
-                                fila.trafico = excel[i].iloc[j,5]
-                                fila.save()
-
-                    elif i == pag4:
-                        long = len(excel[i].index)
-
-                        ultimo_registro = Demanda_Ingresos.objects.order_by('id').first()
-
-                        if ultimo_registro:
-                            print(f'La tabla {i} tiene elementos\n')
-                            ultimoID = ultimo_registro.id
-                            nuevoID = ultimoID + 1
-                            for j in range(long):
-                                fila = Demanda_Ingresos()
-                                fila.id = nuevoID
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idEmpresa = excel[i].iloc[j,3]
-                                fila.empresa = excel[i].iloc[j,4]
-                                fila.id_modalidad_pago = excel[i].iloc[j,5]
-                                fila.modalidad_pago = excel[i].iloc[j,6]
-                                fila.id_terminal = excel[i].iloc[j,7]
-                                fila.terminal = excel[i].iloc[j,8]
-                                fila.ingresos = excel[i].iloc[j,9]
-                                fila.save()
-                                nuevoID += 1
-                        else:
-                            print(f'la tabla {i} esta vacia')
-                            for j in range(long):
-                                fila = Demanda_Ingresos()
-                                fila.id = j
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idEmpresa = excel[i].iloc[j,3]
-                                fila.empresa = excel[i].iloc[j,4]
-                                fila.id_modalidad_pago = excel[i].iloc[j,5]
-                                fila.modalidad_pago = excel[i].iloc[j,6]
-                                fila.id_terminal = excel[i].iloc[j,7]
-                                fila.terminal = excel[i].iloc[j,8]
-                                fila.ingresos = excel[i].iloc[j,9]
-                                fila.save()
-
-                    elif i == pag5:
-                        long = len(excel[i].index)
-
-                        ultimo_registro = Demanda_Abonados.objects.order_by('id').first()
-
-                        if ultimo_registro:
-                            print(f'La tabla {i} tiene elementos\n')
-                            ultimoID = ultimo_registro.id
-                            nuevoID = ultimoID + 1
-                            for j in range(long):
-                                fila = Demanda_Abonados()
-                                fila.id = nuevoID
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idEmpresa = excel[i].iloc[j,3]
-                                fila.empresa = excel[i].iloc[j,4]
-                                fila.id_modalidad_pago = excel[i].iloc[j,5]
-                                fila.modalidad_pago = excel[i].iloc[j,6]
-                                fila.id_terminal = excel[i].iloc[j,7]
-                                fila.terminal = excel[i].iloc[j,8]
-                                fila.id_tecnologia = excel[i].iloc[j,9]
-                                fila.tecnologia = excel[i].iloc[j,10]
-                                fila.cantidad_abonados = excel[i].iloc[j,11]
-                                fila.save()
-                                nuevoID += 1
-                        else:
-                            print(f'la tabla {i} esta vacia')
-                            for j in range(long):
-                                fila = Demanda_Abonados()
-                                fila.id = j
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idEmpresa = excel[i].iloc[j,3]
-                                fila.empresa = excel[i].iloc[j,4]
-                                fila.id_modalidad_pago = excel[i].iloc[j,5]
-                                fila.modalidad_pago = excel[i].iloc[j,6]
-                                fila.id_terminal = excel[i].iloc[j,7]
-                                fila.terminal = excel[i].iloc[j,8]
-                                fila.id_tecnologia = excel[i].iloc[j,9]
-                                fila.tecnologia = excel[i].iloc[j,10]
-                                fila.cantidad_abonados = excel[i].iloc[j,11]
-                                fila.save()
-                    
-                    elif i == pag6:
-                        long = len(excel[i].index)
-
-                        ultimo_registro = Demanda_Trafico.objects.order_by('id').first()
-
-                        if ultimo_registro:
-                            print(f'La tabla {i} tiene elementos\n')
-                            ultimoID = ultimo_registro.id
-                            nuevoID = ultimoID + 1
-                            for j in range(long):
-                                fila = Demanda_Trafico()
-                                fila.id = nuevoID
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idEmpresa = excel[i].iloc[j,3]
-                                fila.empresa = excel[i].iloc[j,4]
-                                fila.id_modalidad_pago = excel[i].iloc[j,7]
-                                fila.modalidad_pago = excel[i].iloc[j,5]
-                                fila.trafico = excel[i].iloc[j,6]
-                                fila.save()
-                                nuevoID += 1
-                        else:
-                            print(f'la tabla {i} esta vacia')
-                            for j in range(long):
-                                fila = Demanda_Trafico()
-                                fila.id = j
-                                fila.anio = excel[i].iloc[j,0]
-                                fila.trimestre = excel[i].iloc[j,1]
-                                fila.mes = excel[i].iloc[j,2]
-                                fila.idEmpresa = excel[i].iloc[j,3]
-                                fila.empresa = excel[i].iloc[j,4]
-                                fila.id_modalidad_pago = excel[i].iloc[j,7]
-                                fila.modalidad_pago = excel[i].iloc[j,5]
-                                fila.trafico = excel[i].iloc[j,6]
-                                fila.save()
-
-                except KeyError:
-                    print("ERROR")
-            
             print('Es un archivo de Excel')
         elif extension.lower() == '.csv':
             print("Es un archivo de CSV")
+
+            csv = pd.read_csv(archivo)
+            print(csv)
+
+            if nombre_archvio == 'tabla_accesos':
+                print('Es el archivo de abonados')
+                long = len(csv.index)
+                ultimo_registro = Abonados.objects.order_by('id').first()
+
+                if ultimo_registro:
+                    ultimoID = ultimo_registro.id
+                    nuevoID = ultimoID + 1
+                    for i in range(long):
+                        fila = Abonados()
+                        fila.id = nuevoID
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.colombia_telecomunicaciones = csv.iloc[i,3]
+                        fila.colombia_movil = csv.iloc[i,4]
+                        fila.comunicacion_celular_comcel = csv.iloc[i,5]
+                        fila.empresa_de_telecomunicaciones_de_bogota = csv.iloc[i,6]
+                        fila.une_epm = csv.iloc[i,7]
+                        fila.avantel = csv.iloc[i,8]
+                        fila.almacenes_exito = csv.iloc[i,9]
+                        fila.virgin_mobile = csv.iloc[i,10]
+                        fila.partners_telecom = csv.iloc[i,11]
+                        fila.setroc_mobile = csv.iloc[i,12]
+                        fila.uff_movil = csv.iloc[i,13]
+                        fila.cellvoz_colombia = csv.iloc[i,14]
+                        fila.logistica_flash = csv.iloc[i,15]
+                        fila.lov_telecomunicaciones = csv.iloc[i,16]
+                        fila.suma_movil = csv.iloc[i,17]
+                        fila.save()
+                        nuevoID += 1
+                else:
+                    for i in range(long):
+                        fila = Abonados()
+                        fila.id = i
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.colombia_telecomunicaciones = csv.iloc[i,3]
+                        fila.colombia_movil = csv.iloc[i,4]
+                        fila.comunicacion_celular_comcel = csv.iloc[i,5]
+                        fila.empresa_de_telecomunicaciones_de_bogota = csv.iloc[i,6]
+                        fila.une_epm = csv.iloc[i,7]
+                        fila.avantel = csv.iloc[i,8]
+                        fila.almacenes_exito = csv.iloc[i,9]
+                        fila.virgin_mobile = csv.iloc[i,10]
+                        fila.partners_telecom = csv.iloc[i,11]
+                        fila.setroc_mobile = csv.iloc[i,12]
+                        fila.uff_movil = csv.iloc[i,13]
+                        fila.cellvoz_colombia = csv.iloc[i,14]
+                        fila.logistica_flash = csv.iloc[i,15]
+                        fila.lov_telecomunicaciones = csv.iloc[i,16]
+                        fila.suma_movil = csv.iloc[i,17]
+                        fila.save()
+
+            elif nombre_archvio == 'tabla_trafico':
+                print('Es el archivo de trafico')
+                long = len(csv.index)
+                ultimo_registro = Trafico.objects.order_by('id').first()
+
+                if ultimo_registro:
+                    ultimoID = ultimo_registro.id
+                    nuevoID = ultimoID + 1
+                    for i in range(long):
+                        fila = Trafico()
+                        fila.id = nuevoID
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.colombia_telecomunicaciones = csv.iloc[i,3]
+                        fila.colombia_movil = csv.iloc[i,4]
+                        fila.comunicacion_celular_comcel = csv.iloc[i,5]
+                        fila.empresa_de_telecomunicaciones_de_bogota = csv.iloc[i,6]
+                        fila.une_epm = csv.iloc[i,7]
+                        fila.avantel = csv.iloc[i,8]
+                        fila.almacenes_exito = csv.iloc[i,9]
+                        fila.virgin_mobile = csv.iloc[i,10]
+                        fila.partners_telecom = csv.iloc[i,11]
+                        fila.setroc_mobile = csv.iloc[i,12]
+                        fila.uff_movil = csv.iloc[i,13]
+                        fila.cellvoz_colombia = csv.iloc[i,14]
+                        fila.logistica_flash = csv.iloc[i,15]
+                        fila.lov_telecomunicaciones = csv.iloc[i,16]
+                        fila.suma_movil = csv.iloc[i,17]
+                        fila.save()
+                        nuevoID += 1
+                else:
+                    for i in range(long):
+                        fila = Trafico()
+                        fila.id = i
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.colombia_telecomunicaciones = csv.iloc[i,3]
+                        fila.colombia_movil = csv.iloc[i,4]
+                        fila.comunicacion_celular_comcel = csv.iloc[i,5]
+                        fila.empresa_de_telecomunicaciones_de_bogota = csv.iloc[i,6]
+                        fila.une_epm = csv.iloc[i,7]
+                        fila.avantel = csv.iloc[i,8]
+                        fila.almacenes_exito = csv.iloc[i,9]
+                        fila.virgin_mobile = csv.iloc[i,10]
+                        fila.partners_telecom = csv.iloc[i,11]
+                        fila.setroc_mobile = csv.iloc[i,12]
+                        fila.uff_movil = csv.iloc[i,13]
+                        fila.cellvoz_colombia = csv.iloc[i,14]
+                        fila.logistica_flash = csv.iloc[i,15]
+                        fila.lov_telecomunicaciones = csv.iloc[i,16]
+                        fila.suma_movil = csv.iloc[i,17]
+                        fila.save()
+
+            elif nombre_archvio == 'tabla_ingresos':
+                print('Es el archivo de ingresos')
+                long = len(csv.index)
+                ultimo_registro = Ingresos.objects.order_by('id').first()
+
+                if ultimo_registro:
+                    ultimoID = ultimo_registro.id
+                    nuevoID = ultimoID + 1
+                    for i in range(long):
+                        fila = Ingresos()
+                        fila.id = nuevoID
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.colombia_telecomunicaciones = csv.iloc[i,3]
+                        fila.colombia_movil = csv.iloc[i,4]
+                        fila.comunicacion_celular_comcel = csv.iloc[i,5]
+                        fila.empresa_de_telecomunicaciones_de_bogota = csv.iloc[i,6]
+                        fila.une_epm = csv.iloc[i,7]
+                        fila.avantel = csv.iloc[i,8]
+                        fila.almacenes_exito = csv.iloc[i,9]
+                        fila.virgin_mobile = csv.iloc[i,10]
+                        fila.partners_telecom = csv.iloc[i,11]
+                        fila.setroc_mobile = csv.iloc[i,12]
+                        fila.uff_movil = csv.iloc[i,13]
+                        fila.cellvoz_colombia = csv.iloc[i,14]
+                        fila.logistica_flash = csv.iloc[i,15]
+                        fila.lov_telecomunicaciones = csv.iloc[i,16]
+                        fila.suma_movil = csv.iloc[i,17]
+                        fila.save()
+                        nuevoID += 1
+                else:
+                    for i in range(long):
+                        fila = Ingresos()
+                        fila.id = i
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.colombia_telecomunicaciones = csv.iloc[i,3]
+                        fila.colombia_movil = csv.iloc[i,4]
+                        fila.comunicacion_celular_comcel = csv.iloc[i,5]
+                        fila.empresa_de_telecomunicaciones_de_bogota = csv.iloc[i,6]
+                        fila.une_epm = csv.iloc[i,7]
+                        fila.avantel = csv.iloc[i,8]
+                        fila.almacenes_exito = csv.iloc[i,9]
+                        fila.virgin_mobile = csv.iloc[i,10]
+                        fila.partners_telecom = csv.iloc[i,11]
+                        fila.setroc_mobile = csv.iloc[i,12]
+                        fila.uff_movil = csv.iloc[i,13]
+                        fila.cellvoz_colombia = csv.iloc[i,14]
+                        fila.logistica_flash = csv.iloc[i,15]
+                        fila.lov_telecomunicaciones = csv.iloc[i,16]
+                        fila.suma_movil = csv.iloc[i,17]
+                        fila.save()
+            else:
+                print('No es un archivo que se deba procesar')
+
         else:
             return HttpResponse("<h1> Tipo de archivo no valido </h1>")
             #raise TypeError("Este tipo de archivo no es aceptado")
 
         #print(archivo)
         #print(type(archivo))
-    return HttpResponse("El boton esta funcionando")
+    return render(request, 'html/PrincipalAnalista.html')
+    
