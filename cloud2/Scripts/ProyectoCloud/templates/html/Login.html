@@ -29,13 +29,20 @@
         <div class="Datos">
             <h1> Datos</h1> 
             <div class = Espacio >
-                <label for="label1">Ingresa tu correo ejemplo@gmail.com email:</label><br>
-                <input type="email" id="email" pattern=".+@example\.com" style="font-size: 20px;" required /><br>
-                <label for="label1">Contraseña:</label><br>
-                <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" required /> <br><!--  agregar los otros requisitos de la contraseña -->
-                <label for="label1"> Recordarme</label>
-                <input type="checkbox" id="cbox1" value="first_checkbox" /> <!--  revisar si necesito label en css -->
-                <a href="#" class="btn3"> Iniciar sesion</a> 
+                <form action="login/" method = "POST">
+                    {% csrf_token %}
+
+                    <label for="label1">Ingresa tu correo ejemplo@gmail.com email:</label><br>
+                    <!-- <input type="email" id="email" pattern="^[a-zA-Z\d\.-]+@[a-z]\.[a-zA-Z]$" style="font-size: 20px;" name = 'correo',required /><br> -->
+                    <input type="text" style="font-size: 20px;" name = 'correo', required id = "id_username" /><br>
+                    <label for="label1">Contraseña:</label><br>
+                    <!-- <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" style="font-size: 20px;" name = 'contraseña', required /> <br>--> <!--  agregar los otros requisitos de la contraseña -->
+                    <input type="password" style="font-size: 20px;" name = 'contraseña', required id = "id_password" /> <br><!--  agregar los otros requisitos de la contraseña -->
+                    <label for="label1"> Recordarme</label>
+                    <input type="checkbox" id="cbox1" value="first_checkbox" /> <!--  revisar si necesito label en css -->
+                    <button type="submit" class="btn3">Iniciar sesion</button>
+                    <!-- <a href="#" class="btn3"> Iniciar sesion</a>-->
+                </form>
             </div>
             <button onclick="irAPaginaCrear()" class="btn5">Crear cuenta</button>
             <button onclick="irAPaginaContraseña()" class="btn5">Olvide mi contraseña</button> <!--  boton solo texto -->

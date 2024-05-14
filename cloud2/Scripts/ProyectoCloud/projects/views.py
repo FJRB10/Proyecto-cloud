@@ -1,20 +1,59 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Usuario
+from .models import Usuario, Fijo_Suscriptores
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth.decorators import login_required
+import os
+import pandas as pd
 
 # Create your views here.
 
 def paginaPrincipal(request):
-    return render(request, 'html/Cod1.html')
+    #if request.user.is_anonymous:
+        #return redirect('/Login.html')
+    #else:
+        return render(request, 'html/Cod1.html')
 
 def login(request):
+    #print(request.user)
     return render(request, 'html/login.html')
+
+def login2(request):
+    if request.method == 'POST':
+        username = request.POST['correo']
+        password = request.POST['contraseña']
+
+        print(request.POST)
+
+        user = authenticate(request, username = username, password = password)
+
+        print('Usuario:', user)
+        print('Esta activo?', user.is_active)
+        print('Es anonimo?', user.is_anonymous)
+
+        if user is not None:
+            print('Se dirige hacer el login')
+            login(request, user)
+            user2 = Usuario.objects.get(correo = user).rol
+            print(user2)
+            
+
+            if user2 == 'Usuario':
+                return redirect('/Cod1.html')
+            elif user2 == 'Analista':
+                return redirect('/PrincipalAnalista.html')
+            else:
+                return redirect('/Administrador.html')
+        else:
+            print('No realiza el login')
+            return redirect('/Login.html')
 
 def perfil(request):
     return render(request, 'html/perfil.html')
 
 def PrincipalAnalista(request):
+    #print(request.user)
     return render(request, 'html/PrincipalAnalista.html')
 
 def registro(request):
@@ -45,7 +84,7 @@ def usoRegistro(request):
     user1.first_name = request.POST['Nombre']
     user1.last_name = request.POST['Apellido']
     user1.email = request.POST['Email']
-    user1.is_staff = False
+    user1.is_staff = True
     user1.is_active = True
     user1.set_password(request.POST['Contraseña'])
     user1.save()
@@ -58,7 +97,7 @@ def usoRegistro(request):
     user2.num_cedula = request.POST['NumeroCedu']
     user2.correo = request.POST['Email']
     user2.contra = request.POST['Contraseña']
-    user2.rol = 'Analista'
+    user2.rol = 'Usuario'
     user2.save()
 
     return redirect('/Registro.html')
@@ -68,3 +107,97 @@ def administrador (request):
 
 def olvideContra(request):
     return render(request, 'html/OlvideContra.html')
+
+#@login_required
+def verHistorico(request):
+    print(request.user.is_authenticated)
+    print(request.user)
+    print(request.user.username)
+    return HttpResponse("El boton esta funcionando")
+
+def cargarArchivo(request):
+    if request.method == 'POST':
+        archivo = request.FILES['archivo']
+
+        nombre_archvio, extension = os.path.splitext(archivo.name)
+
+        if extension.lower() == '.xlsx':
+            excel = pd.read_excel(archivo, sheet_name = None)
+            pag1 = 'INTERNET_MOVIL_CARGO_FIJO_SUSCR'
+            pag2 = 'INTERNET_MOVIL_CARGO_FIJO_INGRE'
+            pag3 = 'INTERNET_MOVIL_CARGO_FIJO_TRAFI'
+            pag4 = 'INTERNET_MOVIL_DEMANDA_INGRESOS'
+            pag5 = 'INTERNET_MOVIL_DEMANDA_ABONADOS'
+            pag6 = 'INTERNET_MOVIL_DEMANDA_TRAFICO_'
+
+            lista = [pag1, pag2, pag3, pag4, pag5, pag6]
+            
+            for i in lista:
+                try:
+                    excel[i]
+                    
+                    if i == pag1:
+                        print(excel[i].iloc[0])
+                        long = len(excel[i].index)
+
+                        ultimo_registro = Fijo_Suscriptores.objects.order_by('id').first()
+
+                        if ultimo_registro:
+                            print('Tabla con elementos\n')
+                            ultimoID = ultimo_registro.id
+                            nuevoID = ultimoID + 1
+                            for i in range(long):
+                                fila = Fijo_Suscriptores()
+                                fila.id = nuevoID
+                                fila.anio = excel[i].iloc[i,0]
+                                fila.trimestre = excel[i].iloc[i,1]
+                                fila.mes = excel[i].iloc[i,2]
+                                fila.idSegmento = excel[i].iloc[i,3]
+                                fila.segmento = excel[i].iloc[i,4]
+                                fila.idEmpresa = excel[i].iloc[i,5]
+                                fila.empresa = excel[i].iloc[i,6]
+                                fila.idterminal = excel[i].iloc[i,7]
+                                fila.terminal = excel[i].iloc[i,8]
+                                fila.idtecnologia = excel[i].iloc[i,9]
+                                fila.tecnologia = excel[i].iloc[i,10]
+                                fila.cantidadSus = excel[i].iloc[i,11]
+                                nuevoID += 1
+                        else:
+                            print('Tabla vacia')
+                            for i in range(long):
+                                fila = Fijo_Suscriptores()
+                                fila.id = i
+                                fila.anio = excel[i].iloc[i,0]
+                                fila.trimestre = excel[i].iloc[i,1]
+                                fila.mes = excel[i].iloc[i,2]
+                                fila.idSegmento = excel[i].iloc[i,3]
+                                fila.segmento = excel[i].iloc[i,4]
+                                fila.idEmpresa = excel[i].iloc[i,5]
+                                fila.empresa = excel[i].iloc[i,6]
+                                fila.idterminal = excel[i].iloc[i,7]
+                                fila.terminal = excel[i].iloc[i,8]
+                                fila.idtecnologia = excel[i].iloc[i,9]
+                                fila.tecnologia = excel[i].iloc[i,10]
+                                fila.cantidadSus = excel[i].iloc[i,11]
+
+                        
+
+                    elif i == pag2:
+                        long = len(excel[i].index)
+
+                        #for i in range(long):
+
+
+                except KeyError:
+                    print("ERROR")
+            
+            print('Es un archivo de Excel')
+        elif extension.lower() == '.csv':
+            print("Es un archivo de CSV")
+        else:
+            return HttpResponse("<h1> Tipo de archivo no valido </h1>")
+            #raise TypeError("Este tipo de archivo no es aceptado")
+
+        #print(archivo)
+        #print(type(archivo))
+    return HttpResponse("El boton esta funcionando")

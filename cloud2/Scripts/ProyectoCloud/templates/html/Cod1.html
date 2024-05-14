@@ -58,7 +58,12 @@
 
                         <img src="{% static '/Images/Graficas_datos.jpg' %}" class="Graficas"><br>
 
-                        <a href="#" class="btn1"> Ver historico</a> 
+                        <form action="historico/" method="POST">
+                            {% csrf_token %}
+                            <button class="btn1"> Ver historico </button>
+                        </form>
+
+                        <!--<a href="#" class="btn1"> Ver historico</a> -->
                         <a href="#" class="btn1"> Ver tendencias </a>
                         <a href="#" class="btn1"> Visualizar</a>  
                     </div>

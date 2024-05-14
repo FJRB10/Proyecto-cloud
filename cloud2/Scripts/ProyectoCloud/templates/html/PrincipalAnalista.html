@@ -69,9 +69,12 @@
             <button onclick="abrirVentana()" class="btn6"> Cargar archivos</button>
             <div class="ventana-Signin" id="ventana-Signin">
                 <div class="ventana">
-                    <label style="font-size: 20px;" for="archivo">Selecciona un archivo:</label>
-                    <input type="file" id="archivo" name="archivo" accept=".txt, .pdf, .doc"> <br>
-                    <button class="btn8" type="submit">Enviar Archivo</button><br>
+                    <form action="cargueArchivo/" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label style="font-size: 20px;" for="archivo">Selecciona un archivo:</label>
+                        <input type="file" id="archivo" name="archivo" accept=".xlsx, .csv"> <br>
+                        <button class="btn8" type="submit">Enviar Archivo</button><br>
+                    </form>
                     <button onclick="cerrarVentana()" class="btn8"> Cerrar </button>
                 </div>
             </div> 
