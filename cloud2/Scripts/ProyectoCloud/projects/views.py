@@ -6,6 +6,10 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
 import os
 import pandas as pd
+import plotly.graph_objs as go
+import plotly.express as px
+from _plotly_utils import utils
+import json
 
 # Create your views here.
 
@@ -298,4 +302,45 @@ def cargarArchivo(request):
         #print(archivo)
         #print(type(archivo))
     return render(request, 'html/PrincipalAnalista.html')
+
+def graficar(request):
+    if request.method == 'POST':
+        columna = request.POST.get('opcion')
+        #print('La opción seleccionada fue: ', request.POST.get('opcion'))
+
+        valoresAbonados = Abonados.objects.values_list(columna, flat = True)
+        valoresTrafico = Trafico.objects.values_list(columna, flat = True)
+        valoresIngresos = Ingresos.objects.values_list(columna, flat = True)
+
+        anios = Abonados.objects.values_list('anio', flat = True)
+        meses = Abonados.objects.values_list('mes', flat = True)
+
+        fechas = []
+
+        for i in range(len(anios)):
+            fechas.append(str(anios[i]) + "-" + str(meses[i]) + "-01")
+
+        #print(fechas)
+
+        fig = go.Figure()
+        fig2 = go.Figure()
+        fig3 = go.Figure()
+
+        fig.add_trace(go.Scatter(x = fechas, y = list(valoresAbonados), mode = 'lines+markers', name = 'Valores'))
+        fig2.add_trace(go.Scatter(x = fechas, y = list(valoresTrafico), mode = 'lines+markers', name = 'Valores'))
+        fig3.add_trace(go.Scatter(x = fechas, y = list(valoresIngresos), mode = 'lines+markers', name = 'Valores'))
+
+        fig.update_layout(title = f'Grafica de abonados de {columna}', xaxis_title = 'Meses', yaxis_title = 'Abonados')
+        fig2.update_layout(title = f'Grafica de trafico de {columna}', xaxis_title = 'Meses', yaxis_title = 'Trafico')
+        fig3.update_layout(title = f'Grafica de ingresos de {columna}', xaxis_title = 'Meses', yaxis_title = 'Ingresos')
+
+        graph1_html = fig.to_html(full_html = False, default_height=600, default_width=1750)
+        graph2_html = fig2.to_html(full_html = False, default_height=600, default_width=1750)
+        graph3_html = fig3.to_html(full_html = False, default_height=600, default_width=1750)
+
+        return render(request, 'html/PrincipalAnalista.html', {'grafica1': graph1_html, 'grafica2': graph2_html, 'grafica3': graph3_html})
+        #return HttpResponse('El view funciona')
+    else:
+        print('El view no sirve')
+        return HttpResponse('El view no funciona')
     

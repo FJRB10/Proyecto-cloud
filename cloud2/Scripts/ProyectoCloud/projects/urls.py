@@ -14,4 +14,5 @@ urlpatterns = [
     path('OlvideContra.html', views.olvideContra, name = 'project'),
     path('historico/', views.verHistorico),
     path('cargueArchivo/', views.cargarArchivo),
+    path('graficar/', views.graficar),
 ]
