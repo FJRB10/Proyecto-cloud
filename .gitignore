@@ -7,3 +7,4 @@ cloud2/Scripts/ProyectoCloud/db.sqlite3
 
 # Archivos y carpetas que no seran ignorados
 !cloud2/Scripts/ProyectoCloud
+!cloud2/Scripts/requirements.txt
