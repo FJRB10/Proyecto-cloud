@@ -78,16 +78,29 @@ WSGI_APPLICATION = 'ProyectoCloud.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+#configuracion de la base de datos para una RDS de AWS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'projects',
+        'NAME': 'primera',
         'USER': 'postgres',
-        'PASSWORD': 'Root123',
-        'HOST': 'localhost',
+        'PASSWORD': 'root1234',
+        'HOST': 'cloud-postgres-database.cvemxhxtxdsf.us-east-1.rds.amazonaws.com',
         'PORT': 5432
     }
 }
+
+#configuracion de la base de datos para una base de datos local
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'projects',
+#        'USER': 'postgres',
+#        'PASSWORD': 'Root123',
+#        'HOST': 'localhost',
+#        'PORT': 5432
+#    }
+#}
 
 #DATABASES = {
 #    'default': {
