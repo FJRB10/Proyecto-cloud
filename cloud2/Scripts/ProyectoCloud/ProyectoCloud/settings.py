@@ -28,7 +28,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-STATICFILES_DIRS = ['C:/Cloud/Proyecto-cloud/cloud2/Scripts/ProyectoCloud/static']
+#Ruta de la carpeta de archivos estaticos para la instacia EC2 de AWS
+STATICFILES_DIRS = ['/home/ubuntu/django/myprojectenv/Proyecto-cloud/cloud2/Scripts/ProyectoCloud/static']
+
+#Ruta de la carpeta de archivos estaticos para la base de datos local
+#STATICFILES_DIRS = ['C:/Cloud/Proyecto-cloud/cloud2/Scripts/ProyectoCloud/static']
 
 # Application definition
 
