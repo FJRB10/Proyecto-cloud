@@ -14,12 +14,17 @@
     <section class="home">
         <div class="nav-bar">
             <p> GOV.CO</p> 
-            <button onclick="irAPaginaPerfil()"> Perfil</button> <!-- logo de perfil-->
+            <a href="{% url 'perfil' %}">
+                <button> Perfil</button> <!-- logo de perfil-->
+            </a>
         </div>
         <div class="logo-CRC">
-            <button onclick="irAPaginaAnalista()">
-                <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
-            </button>
+            <a href="{% url 'principal_analista' %}">
+                <button>
+                    <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
+                </button>
+            </a>
+            
         </div>
         <div class="content">
             <h1> Sobre la pagina</h1> 
@@ -31,7 +36,7 @@
             <div class = Esp_Graficas >
                 <div class="tabs">
                     <input type="radio" class="tabs_radio" name="tab-group" id="tab1" checked>
-                    <label for="tab1" class="tabs_label">Tráfico</label>
+                    <label for="tab1" class="tabs_label">Graficas</label>
                     <div class="tabs-content">
                         
                         <div style="display: inline-block; width: 100%;">
@@ -72,21 +77,32 @@
                         </div>
 
                     </div>
-                        
-                        <!-- <a href="#" class="btn1"> Ver historico</a> -->
-                        <!-- <a href="#" class="btn1"> Ver tendencias </a> -->
-                        <!-- <a href="#" class="btn1"> Visualizar</a> -->
-                    </div>
-                
-                    <input type="radio" class="tabs_radio" name="tab-group" id="tab2">
-                    <label for="tab2" class="tabs_label">Número de usuarios</label>
-                    <div class="tabs-content">
-                        contenido tab 2
-                        <a href="#" class="btn1"> Ver historico</a> 
-                        <a href="#" class="btn1"> Ver tendencias </a>
-                        <a href="#" class="btn1"> Visualizar</a>  
                     
+                    <input type="radio" class="tabs_radio" name="tab-group" id="tab2">
+                    <label for="tab2" class="tabs_label">Stenbacka</label>
+                    
+                    <div class="tabs-content">
+                        <div style="display: inline-block; width: 100%;">
+                            {{ grafica1_1|safe}}
+                        </div>
+
+                        <div style="display: inline-block; width: 100%;">
+                            {{ grafica2_2|safe}}
+                        </div>
+
+                        <div style="display: inline-block; width: 100%;">
+                            {{ grafica3_3|safe}}
+                        </div>
+
+                        <div style="display: inline-block; width: 100%;">
+                            <form action = "/graficar2/" method = "POST">
+                                {% csrf_token %}
+                                    <button type="submit" class = 'btn8'>Graficar</button>
+                            </form>
+                        </div>
+                        
                     </div>
+                    
                 </div>
             </div>
             <!-- Se deben meter dentro de cada tab? para que no haya confusiones entre tabs-->

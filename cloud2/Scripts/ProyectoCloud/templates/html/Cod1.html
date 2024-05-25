@@ -17,16 +17,26 @@
             <div class="ventana-Signin" id="ventana-Signin">
                 <div class="ventana">
                     <h2 style="text-align: center;">Bienvenid@</h2>
-                    <button onclick="irAPaginaSesion()" class="btn5">Iniciar sesion</button>
-                    <button onclick="irAPaginaCrear()" class="btn5">Crear cuenta</button> <br>
+                    <a href="{% url 'login' %}">
+                        <button class="btn5">Iniciar sesion</button>
+                    </a>
+                    
+                    <a href="{% url 'registro' %}">
+                        <button class="btn5">Crear cuenta</button> <br>
+                    </a>
+
                     <button onclick="cerrarVentana()" class="btn7"> Cerrar </button>
+                    
                 </div>
             </div>
         </div>
         <div class="logo-CRC">
-            <button onclick="irAPaginaCod1()">
-                <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
-            </button>
+            <a href="{% url 'index' %}">
+                <button>
+                    <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
+                </button>
+            </a>
+            
         </div>
         
         <div class="content">
@@ -39,7 +49,7 @@
             <div class = Esp_Graficas >
                 <div class="tabs">
                     <input type="radio" class="tabs_radio" name="tab-group" id="tab1" checked>
-                    <label for="tab1" class="tabs_label">Tràfico</label>
+                    <label for="tab1" class="tabs_label">Tráfico</label>
                     <div class="tabs-content">
                         <input class="startdate" type="date" id="start" name="trip-start" min="2020-01-01" /><br>
                         <label for="label2"> Operadores</label><br>
@@ -69,7 +79,7 @@
                     </div>
 
                     <input type="radio" class="tabs_radio" name="tab-group" id="tab2">
-                    <label for="tab2" class="tabs_label">Nùmero de usuarios</label>
+                    <label for="tab2" class="tabs_label">Número de usuarios</label>
                     <div class="tabs-content">
                         <input class="startdate" type="date" id="start" name="trip-start" min="2020-01-01" /><br>
                         <label for="label2"> Operadores</label><br>

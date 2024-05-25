@@ -13,13 +13,17 @@
     <section class="home">
         <div class="nav-bar">
             <p> GOV.CO</p> 
-            <button onclick="irAPaginaPerfil()"> Perfil</button> 
+            <a href="{% url 'perfil' %}">
+                <button> Perfil</button> <!-- logo de perfil-->
+            </a> 
             
         </div>
         <div class="logo-CRC">
-            <button onclick="irAPaginaAnalista()">
-                <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
-            </button>
+            <a href="{% url 'principal_analista' %}">
+                <button>
+                    <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
+                </button>
+            </a>
         </div>
         <!-- Seccion de datos-->
         <div class="Datos">

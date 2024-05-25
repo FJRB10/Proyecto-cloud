@@ -87,3 +87,21 @@ class Ingresos(models.Model):
     logistica_flash = models.BigIntegerField(null = True)
     lov_telecomunicaciones = models.BigIntegerField(null = True)
     suma_movil = models.BigIntegerField(null = True)
+
+class Stenbaka_Abonados(models.Model):
+    id = models.IntegerField(primary_key = True)
+    anio = models.IntegerField(null = True)
+    mes = models.IntegerField(null = True)
+    stenbaka = models.FloatField(null = True)
+
+class Stenbaka_Trafico(models.Model):
+    id = models.IntegerField(primary_key = True)
+    anio = models.IntegerField(null = True)
+    mes = models.IntegerField(null = True)
+    stenbaka = models.FloatField(null = True)
+
+class Stenbaka_Ingresos(models.Model):
+    id = models.IntegerField(primary_key = True)
+    anio = models.IntegerField(null = True)
+    mes = models.IntegerField(null = True)
+    stenbaka = models.FloatField(null = True)

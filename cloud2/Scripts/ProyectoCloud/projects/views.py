@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .models import Usuario, Abonados, Trafico, Ingresos
+from .models import Usuario, Abonados, Trafico, Ingresos, Stenbaka_Abonados, Stenbaka_Trafico, Stenbaka_Ingresos
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
@@ -292,6 +292,76 @@ def cargarArchivo(request):
                         fila.lov_telecomunicaciones = csv.iloc[i,16]
                         fila.suma_movil = csv.iloc[i,17]
                         fila.save()
+
+            elif nombre_archvio == 'Stenbacka_accesos':
+                long = len(csv.index)
+                ultimo_registro = Stenbaka_Abonados.objects.order_by('id').first()
+                if ultimo_registro:
+                    ultimoID = ultimo_registro.id
+                    nuevoID = ultimoID + 1
+                    for i in range(long):
+                        fila = Stenbaka_Abonados()
+                        fila.id = nuevoID
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.stenbaka = csv.iloc[i,3]
+                        fila.save()
+                        nuevoID += 1
+                else:
+                    for i in range(long):
+                        fila = Stenbaka_Abonados()
+                        fila.id = i
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.stenbaka = csv.iloc[i,3]
+                        fila.save()
+
+            elif nombre_archvio == 'Stenbacka_trafico':
+                long = len(csv.index)
+                ultimo_registro = Stenbaka_Trafico.objects.order_by('id').first()
+                if ultimo_registro:
+                    ultimoID = ultimo_registro.id
+                    nuevoID = ultimoID + 1
+                    for i in range(long):
+                        fila = Stenbaka_Trafico()
+                        fila.id = nuevoID
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.stenbaka = csv.iloc[i,3]
+                        fila.save()
+                        nuevoID += 1
+                else:
+                    for i in range(long):
+                        fila = Stenbaka_Trafico()
+                        fila.id = i
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.stenbaka = csv.iloc[i,3]
+                        fila.save()
+
+            elif nombre_archvio == 'Stenbacka_ingresos':
+                long = len(csv.index)
+                ultimo_registro = Stenbaka_Ingresos.objects.order_by('id').first()
+                if ultimo_registro:
+                    ultimoID = ultimo_registro.id
+                    nuevoID = ultimoID + 1
+                    for i in range(long):
+                        fila = Stenbaka_Ingresos()
+                        fila.id = nuevoID
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.stenbaka = csv.iloc[i,3]
+                        fila.save()
+                        nuevoID += 1
+                else:
+                    for i in range(long):
+                        fila = Stenbaka_Ingresos()
+                        fila.id = i
+                        fila.anio = csv.iloc[i,1]
+                        fila.mes = csv.iloc[i,2]
+                        fila.stenbaka = csv.iloc[i,3]
+                        fila.save()
+
             else:
                 print('No es un archivo que se deba procesar')
 
@@ -343,4 +413,42 @@ def graficar(request):
     else:
         print('El view no sirve')
         return HttpResponse('El view no funciona')
-    
+
+def graficar2(request):
+    if request.method == 'POST':
+        print("Si se enviaron los datos")
+        valoresStenbackAbonados = Stenbaka_Abonados.objects.values_list('stenbaka', flat = True)
+        valoresStenbackTrafico = Stenbaka_Trafico.objects.values_list('stenbaka', flat = True)
+        valoresStenbackIngresos = Stenbaka_Ingresos.objects.values_list('stenbaka', flat = True)
+
+        anios = Stenbaka_Abonados.objects.values_list('anio', flat = True)
+        meses = Stenbaka_Abonados.objects.values_list('mes', flat = True)
+
+        fechas = []
+
+        for i in range(len(anios)):
+            fechas.append(str(anios[i]) + "-" + str(meses[i]) + "-01")
+
+        fig1 = go.Figure()
+        fig2 = go.Figure()
+        fig3 = go.Figure()
+
+        fig1.add_trace(go.Scatter(x = fechas, y = list(valoresStenbackAbonados), mode = 'lines+markers', name = 'Valores'))
+        fig2.add_trace(go.Scatter(x = fechas, y = list(valoresStenbackTrafico), mode = 'lines+markers', name = 'Valores'))
+        fig3.add_trace(go.Scatter(x = fechas, y = list(valoresStenbackIngresos), mode = 'lines+markers', name = 'Valores'))
+
+        fig1.update_layout(title = f'Grafica de Stenbacka de abonados', xaxis_title = 'Meses', yaxis_title = 'Stenbacka de Abonados')
+        fig2.update_layout(title = f'Grafica Stenbacka de trafico', xaxis_title = 'Meses', yaxis_title = 'Stenbacka de Trafico')
+        fig3.update_layout(title = f'Grafica Stenbacka de ingresos', xaxis_title = 'Meses', yaxis_title = 'Stenbacka de Ingresos')
+
+        graph1_1_html = fig1.to_html(full_html = False, default_height=600, default_width=1750)
+        graph2_2_html = fig2.to_html(full_html = False, default_height=600, default_width=1750)
+        graph3_3_html = fig3.to_html(full_html = False, default_height=600, default_width=1750)
+
+        return render(request, 'html/PrincipalAnalista.html', {
+            'grafica1_1': graph1_1_html, 
+            'grafica2_2': graph2_2_html, 
+            'grafica3_3': graph3_3_html,
+        })
+    else:
+        return HttpResponse('El view no funciona')

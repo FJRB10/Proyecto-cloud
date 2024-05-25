@@ -13,13 +13,15 @@
     <section class="home">
         <div class="nav-bar">
             <p> GOV.CO</p> 
-            <button> Sign in</button> 
+            <!--<button> Sign in</button> -->
             
         </div>
         <div class="logo-CRC">
-            <button onclick="irAPaginaCod1()">
-                <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
-            </button>
+            <a href="{% url 'index' %}">
+                <button>
+                    <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
+                </button>
+            </a>
         </div>
         
         <div class="content">
@@ -51,8 +53,15 @@
                     <input type="checkbox" id="cbox1" value="first_checkbox" /> 
                     <button type="submit" class="btn3">Registrarme</button> <!--  pendiente emergentes, dependen BD -->
                 </form>
-                <button onclick="irAPaginaSesion()" class="btn5">Iniciar sesion</button>
-                <button onclick="irAPaginaContraseña()" class="btn5">Olvide mi contraseña</button>
+
+                <a href="{% url 'login' %}">
+                    <button class="btn5">Iniciar sesion</button>
+                </a>
+
+                <a href="{% url 'olvideContra' %}">
+                    <button class="btn5">Olvide mi contraseña</button>
+                </a>
+                
             </div>
 
         </div>

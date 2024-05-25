@@ -16,9 +16,11 @@
             
         </div>
         <div class="logo-CRC">
-            <button onclick="irAPaginaCod1()">
-                <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
-            </button>
+            <a href="{% url 'index' %}">
+                <button>
+                    <img src="{% static '/Images/Logo_CRC.jpg' %}" height="200">
+                </button>
+            </a>
         </div>
         
         <div class="content">
@@ -44,8 +46,14 @@
                     <!-- <a href="#" class="btn3"> Iniciar sesion</a>-->
                 </form>
             </div>
-            <button onclick="irAPaginaCrear()" class="btn5">Crear cuenta</button>
-            <button onclick="irAPaginaContraseña()" class="btn5">Olvide mi contraseña</button> <!--  boton solo texto -->
+
+            <a href="{% url 'registro' %}">
+                <button class="btn5">Crear cuenta</button>
+            </a>
+
+            <a href="{% url 'olvideContra' %}">
+                <button class="btn5">Olvide mi contraseña</button> <!--  boton solo texto -->
+            </a>
            
         </div>
     </section>

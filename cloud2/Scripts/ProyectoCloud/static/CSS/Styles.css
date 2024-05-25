@@ -148,11 +148,11 @@ th, td {
 .tabs_radio:checked+.tabs_label{
     font-weight: bold;
     color: #3366CC;
-    border-bottom: 1px solid #3366CC; linea de los tabs 
+    border-bottom: 1px solid #3366CC;
 } 
 
 .tabs_radio:checked+.tabs_label+.tabs-content{
-    display: initial;
+    display: block;
 } 
 
 .btn1 {
