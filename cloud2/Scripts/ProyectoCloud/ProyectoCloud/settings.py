@@ -29,10 +29,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 #Ruta de la carpeta de archivos estaticos para la instacia EC2 de AWS
-#STATICFILES_DIRS = ['/home/ubuntu/django/myprojectenv/Proyecto-cloud/cloud2/Scripts/ProyectoCloud/static']
+STATICFILES_DIRS = ['/home/ubuntu/django/myprojectenv/Proyecto-cloud/cloud2/Scripts/ProyectoCloud/static']
 
 #Ruta de la carpeta de archivos estaticos para la base de datos local
-STATICFILES_DIRS = ['C:/Cloud/Proyecto-cloud/cloud2/Scripts/ProyectoCloud/static']
+#TATICFILES_DIRS = ['C:/Cloud/Proyecto-cloud/cloud2/Scripts/ProyectoCloud/static']
 
 # Application definition
 
@@ -83,7 +83,6 @@ WSGI_APPLICATION = 'ProyectoCloud.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 #configuracion de la base de datos para una RDS de AWS
-'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -94,9 +93,9 @@ DATABASES = {
         'PORT': 5432
     }
 }
-'''
 
 #configuracion de la base de datos para una base de datos local
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -107,6 +106,7 @@ DATABASES = {
         'PORT': 5432
     }
 }
+'''
 
 #DATABASES = {
 #    'default': {
