@@ -54,7 +54,7 @@ def login2(request):
             return redirect('/Login.html')
 
 def perfil(request):
-    return render(request, 'html/perfil.html')
+    return render(request, 'html/Perfil.html')
 
 def PrincipalAnalista(request):
     #print(request.user)
