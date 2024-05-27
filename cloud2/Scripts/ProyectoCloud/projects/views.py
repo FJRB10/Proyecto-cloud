@@ -21,7 +21,7 @@ def paginaPrincipal(request):
 
 def login(request):
     #print(request.user)
-    return render(request, 'html/login.html')
+    return render(request, 'html/Login.html')
 
 def login2(request):
     if request.method == 'POST':
